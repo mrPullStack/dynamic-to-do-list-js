@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to load tasks from Local Storage
     function loadTasks() {
-        const storedTasks = JSON.parse(localStorage.getItem('tasks')
-        storedTasks.forEach(taskText => addTask(taskText, false)));
+        const storedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+        storedTasks.forEach(taskText => addTask(taskText, false)); // 'false' indicates not to save again to Local Storage
     }
 
     //Function to save tasks to Local Storage
@@ -41,6 +41,11 @@ document.addEventListener('DOMContentLoaded', function() {
             saveTasks();
         };
 
+        //Assign an onclick event to the remove button to remove the task
+        removeButton.onclick = function() {
+            taskList.removeChild(listItem);
+            saveTasks();
+        }
         // Append remove button to list item
         listItem.appendChild(removeButton);
 
