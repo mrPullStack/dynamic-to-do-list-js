@@ -107,6 +107,6 @@ document.addEventListener('DOMContentLoaded', function() {
             addTask(taskInput.value.trim());
         }
     });
-    // Load tasks from local storage on page load
+    // Load tasks from local storage on page load,
     loadTasks();
 });
