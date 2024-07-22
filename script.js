@@ -4,6 +4,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const taskInput = document.getElementById('task-input');
     const taskList = document.getElementById('task-list');
 
+    // Function to load tasks from Local Storage
+    function loadTasks() {
+        const storedTasks = JSON.parse(localStorage.getItem('tasks')
+        storedTasks.forEach(taskText => addTask(taskText, false)));
+    }
+
+    //Function to save tasks to Local Storage
+    function saveTasks(){
+        const tasks = [];
+        taskList.childNodes.forEach(item => {
+            tasks.push(item.firstChild.textContent);
+        });
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+
     // Function to add a new task
     function addTask() {
         const taskText = taskInput.value.trim();
